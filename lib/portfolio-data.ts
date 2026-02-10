@@ -94,11 +94,8 @@ export const skills = [
   "Pandas",
   "NumPy",
   "Data Visualization",
-  "Power BI",
-  "Tableau",
   "Excel",
   "Google Sheets",
-  "Statistics",
   "Machine Learning",
   "Git",
 ];

@@ -6,27 +6,27 @@ export function DataVisualization() {
   const visualizations = [
     {
       id: '1',
-      title: 'Revenue Trend Analysis',
-      insight: 'YoY growth of 45% across all regions',
+      title: 'Lorem ipsum',
+      insight: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       gradient: 'from-primary/30 to-accent/30',
     },
     {
       id: '2',
-      title: 'Customer Segmentation',
-      insight: '3 distinct high-value customer segments identified',
-      gradient: 'from-accent/30 to-primary/30',
+      title: 'Lorem ipsum',
+      insight: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      gradient: 'from-primary/30 to-accent/30',
     },
     {
       id: '3',
-      title: 'Performance Dashboard',
-      insight: 'Real-time KPI tracking across 12 metrics',
-      gradient: 'from-primary/20 to-secondary/30',
+      title: 'Lorem ipsum',
+      insight: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      gradient: 'from-primary/30 to-accent/30',
     },
     {
       id: '4',
-      title: 'Cohort Analysis',
-      insight: 'Month-over-month retention improved 18%',
-      gradient: 'from-secondary/30 to-accent/20',
+      title: 'Lorem ipsum',
+      insight: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      gradient: 'from-primary/30 to-accent/30',
     },
   ];
 

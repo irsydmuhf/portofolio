@@ -1,36 +1,54 @@
-'use client';
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Mail, Github, Linkedin, ExternalLink, Instagram } from 'lucide-react';
-import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Github, Linkedin, ExternalLink, Instagram } from "lucide-react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd send this to an API
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+
+    try {
+      await emailjs.send(
+        "service_786y1f8",
+        "template_5lkrh0p",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "wtqtskzk5sTbfOAhL",
+      );
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: "", email: "", message: "" });
+      }, 3000);
+    } catch (error) {
+      console.error("Email send error:", error);
+      alert("Failed to send message 😢");
+    }
   };
 
   return (
@@ -45,7 +63,10 @@ export function Contact() {
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Name
               </label>
               <Input
@@ -60,7 +81,10 @@ export function Contact() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Email
               </label>
               <Input
@@ -76,7 +100,10 @@ export function Contact() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Message
               </label>
               <Textarea
@@ -95,14 +122,16 @@ export function Contact() {
               type="submit"
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              {submitted ? 'Message Sent! 🎉' : 'Send Message'}
+              {submitted ? "Message Sent! 🎉" : "Send Message"}
             </Button>
           </form>
 
           {/* Social Links & Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-6">Connect With Me</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-6">
+                Connect With Me
+              </h3>
 
               <div className="space-y-4">
                 <a
@@ -112,7 +141,9 @@ export function Contact() {
                   <Mail className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-sm text-muted-foreground">irsyad.muhf@gmail.com</p>
+                    <p className="text-sm text-muted-foreground">
+                      irsyad.muhf@gmail.com
+                    </p>
                   </div>
                 </a>
 
@@ -125,7 +156,9 @@ export function Contact() {
                   <Github className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   <div className="flex-1">
                     <p className="font-medium text-foreground">GitHub</p>
-                    <p className="text-sm text-muted-foreground">View my projects</p>
+                    <p className="text-sm text-muted-foreground">
+                      View my projects
+                    </p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground" />
                 </a>
@@ -139,7 +172,9 @@ export function Contact() {
                   <Linkedin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   <div className="flex-1">
                     <p className="font-medium text-foreground">LinkedIn</p>
-                    <p className="text-sm text-muted-foreground">Professional profile</p>
+                    <p className="text-sm text-muted-foreground">
+                      Professional profile
+                    </p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground" />
                 </a>
@@ -152,7 +187,9 @@ export function Contact() {
                   <Instagram className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   <div className="flex-1">
                     <p className="font-medium text-foreground">Instagram</p>
-                    <p className="text-sm text-muted-foreground">Personal photos & updates</p>
+                    <p className="text-sm text-muted-foreground">
+                      Personal photos & updates
+                    </p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground" />
                 </a>
@@ -160,7 +197,9 @@ export function Contact() {
             </div>
 
             <div className="p-6 rounded-lg bg-secondary border border-border">
-              <h4 className="font-semibold text-foreground mb-2">Available for</h4>
+              <h4 className="font-semibold text-foreground mb-2">
+                Available for
+              </h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Full-time positions</li>
                 <li>• Contract projects</li>
