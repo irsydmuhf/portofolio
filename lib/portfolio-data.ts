@@ -74,7 +74,7 @@ export const experience: Experience[] = [
     role: "Junior Data Analyst",
     organization: "Relasi Digital Marketing",
     description:
-      "Lead data analysis initiatives for executive team. Design and maintain analytics infrastructure. Mentor junior analysts.",
+      "Lead data analysis initiatives for executive team. Design and maintain analytics infrastructure.",
     type: "experience",
   },
   {
