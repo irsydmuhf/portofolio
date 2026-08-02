@@ -12,7 +12,7 @@ export function Footer() {
           {/* Branding */}
           <div>
             <h3 className="font-display text-lg font-bold text-foreground mb-2">Irsyad Muhamad Firdaus</h3>
-            <p className="text-muted-foreground text-sm">Data Analyst & Analytics Professional</p>
+            <p className="text-muted-foreground text-sm">Data Analyst</p>
           </div>
 
           {/* Quick Links */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { skills } from "@/lib/portfolio-data";
+import { coreSkills, appliedSkills } from "@/lib/portfolio-data";
 import { accentColor, cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -62,14 +62,31 @@ export function About() {
             </p>
 
             <div className="space-y-4 pt-6">
-              <h3 className="font-display text-xl font-bold">Skills & Technologies</h3>
+              <h3 className="font-display text-xl font-bold">Core Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
+                {coreSkills.map((skill, index) => (
                   <span
                     key={skill}
                     className={cn(
                       "sticker text-foreground hover:-translate-y-0.5 transition-transform",
                       accentColor(index),
+                      index % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]",
+                    )}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <h3 className="font-display text-xl font-bold">Applied in Guided Projects</h3>
+              <div className="flex flex-wrap gap-2">
+                {appliedSkills.map((skill, index) => (
+                  <span
+                    key={skill}
+                    className={cn(
+                      "sticker bg-transparent text-foreground border-dashed hover:-translate-y-0.5 transition-transform",
                       index % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]",
                     )}
                   >

@@ -159,11 +159,11 @@ export const projects: Project[] = [
 export const experience: Experience[] = [
   {
     id: "1",
-    year: "2025 - Present",
-    role: "Junior Data Analyst",
+    year: "October 2025 - Present",
+    role: "Data Analyst",
     organization: "Relasi Digital Marketing",
     description:
-      "Lead data analysis initiatives for executive team. Design and maintain analytics infrastructure.",
+      "Build and maintain automated reporting workflows in Google Sheets and Apps Script, and Looker Studio dashboards, supporting day-to-day business decisions for the executive team.",
     type: "experience",
   },
   {
@@ -186,14 +186,12 @@ export const experience: Experience[] = [
   },
 ];
 
-export const skills = [
+export const coreSkills = [
   "SQL",
-  "Python",
-  "Pandas",
-  "NumPy",
-  "Data Visualization",
   "Excel",
   "Google Sheets",
-  "Machine Learning",
+  "Data Visualization",
   "Git",
 ];
+
+export const appliedSkills = ["Python", "Pandas", "NumPy", "Machine Learning"];
