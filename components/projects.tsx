@@ -81,7 +81,7 @@ export function Projects() {
                       className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
-                      <a href={project.caseStudyLink}>
+                      <a href={project.caseStudyLink} target="_blank" rel="noopener noreferrer">
                         Case Study
                         <ExternalLink className="w-3 h-3 ml-1" />
                       </a>
@@ -93,7 +93,7 @@ export function Projects() {
                       className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
-                      <a href={project.dashboardLink}>
+                      <a href={project.dashboardLink} target="_blank" rel="noopener noreferrer">
                         Dashboard
                         <ExternalLink className="w-3 h-3 ml-1" />
                       </a>
@@ -105,7 +105,7 @@ export function Projects() {
                       className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
-                      <a href={project.githubLink}>
+                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                         <Github className="w-3 h-3" />
                       </a>
                     </Button>
@@ -116,7 +116,7 @@ export function Projects() {
                       className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
-                      <a href={project.fileLink}>
+                      <a href={project.fileLink} target="_blank" rel="noopener noreferrer">
                         <FileText className="w-3 h-3 mr-1" />
                         SQL
                       </a>
