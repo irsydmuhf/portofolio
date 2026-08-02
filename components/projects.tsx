@@ -1,29 +1,41 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { projects } from '@/lib/portfolio-data';
-import { ExternalLink, Github } from 'lucide-react';
+import { accentColor, cn } from '@/lib/utils';
+import { ExternalLink, FileText, Github } from 'lucide-react';
+
+const HEADER_COLORS = [
+  'bg-primary',
+  'bg-accent',
+  'bg-secondary',
+  'bg-[hsl(var(--chart-4))]',
+  'bg-[hsl(var(--chart-5))]',
+];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 bg-secondary/20">
+    <section id="projects" className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">Featured Projects</h2>
+        <h2 className="inline-block font-display text-4xl md:text-5xl font-bold mb-12 bg-secondary border-2 border-foreground rounded-xl px-4 py-1 rotate-[1deg] shadow-[4px_4px_0_0_hsl(var(--foreground))]">
+          Featured Projects
+        </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card
+            <div
               key={project.id}
-              className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col group animate-in"
+              className={cn(
+                'paper-card overflow-hidden flex flex-col animate-in',
+                index % 2 === 0 ? 'rotate-[-1deg]' : 'rotate-[1deg]',
+                'hover:rotate-0',
+              )}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Project Header with gradient */}
-              <div className="h-32 bg-gradient-to-br from-primary/20 to-accent/20 group-hover:from-primary/30 group-hover:to-accent/30 transition-colors" />
+              <div className={cn('h-28 border-b-2 border-foreground', HEADER_COLORS[index % HEADER_COLORS.length])} />
 
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                <h3 className="font-display text-xl font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
@@ -33,28 +45,31 @@ export function Projects() {
 
                 <div className="space-y-4 mb-4 flex-1">
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Problem</p>
+                    <p className="text-xs font-bold text-foreground uppercase mb-1 tracking-wide">Problem</p>
                     <p className="text-sm text-muted-foreground">{project.problem}</p>
                   </div>
 
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Outcome</p>
+                    <p className="text-xs font-bold text-foreground uppercase mb-1 tracking-wide">Outcome</p>
                     <p className="text-sm text-muted-foreground">{project.outcome}</p>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Technologies</p>
-                  <div className="flex flex-wrap gap-1">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs border-primary/30 text-muted-foreground">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                      <span
+                        key={tech}
+                        className={cn('sticker text-xs py-0.5', accentColor(techIndex))}
+                      >
                         {tech}
-                      </Badge>
+                      </span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <Badge variant="outline" className="text-xs border-primary/30 text-muted-foreground">
+                      <span className="sticker text-xs py-0.5 bg-muted">
                         +{project.technologies.length - 3}
-                      </Badge>
+                      </span>
                     )}
                   </div>
                 </div>
@@ -63,8 +78,7 @@ export function Projects() {
                   {project.caseStudyLink && (
                     <Button
                       size="sm"
-                      variant="outline"
-                      className="border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
+                      className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
                       <a href={project.caseStudyLink}>
@@ -76,8 +90,7 @@ export function Projects() {
                   {project.dashboardLink && (
                     <Button
                       size="sm"
-                      variant="outline"
-                      className="border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
+                      className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
                       <a href={project.dashboardLink}>
@@ -89,8 +102,7 @@ export function Projects() {
                   {project.githubLink && (
                     <Button
                       size="sm"
-                      variant="outline"
-                      className="border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
+                      className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
                       asChild
                     >
                       <a href={project.githubLink}>
@@ -98,9 +110,21 @@ export function Projects() {
                       </a>
                     </Button>
                   )}
+                  {project.fileLink && (
+                    <Button
+                      size="sm"
+                      className="border-2 border-foreground bg-card text-foreground hover:bg-secondary rounded-lg shadow-[3px_3px_0_0_hsl(var(--foreground))] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform font-semibold"
+                      asChild
+                    >
+                      <a href={project.fileLink}>
+                        <FileText className="w-3 h-3 mr-1" />
+                        SQL
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
